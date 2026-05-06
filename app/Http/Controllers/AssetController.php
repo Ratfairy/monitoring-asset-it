@@ -150,4 +150,11 @@ class AssetController extends Controller
 
         return view('assets.print', compact('asset'));
     }
+
+    public function publicShow($id)
+    {
+        $asset = Asset::findOrFail($id);
+
+        return view('assets.public-show', compact('asset'));
+    }
 }

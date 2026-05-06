@@ -32,7 +32,7 @@
 
                 <h5>QR Code Asset</h5>
 
-                {!! QrCode::size(200)->generate(route('assets.show', $asset->id)) !!}
+                {!! QrCode::size(200)->generate(route('assets.public', $asset->id)) !!}
 
                 <div class="mt-3">
 
