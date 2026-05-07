@@ -16,6 +16,10 @@ class Asset extends Model
         'tanggal_beli',
         'harga',
         'foto',
-        'status'
+        'status',
+        'status',
+        'dipinjam_ke',
+        'tanggal_pinjam',
+        'tanggal_kembali'
     ];
 }

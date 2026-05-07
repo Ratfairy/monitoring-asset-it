@@ -122,18 +122,37 @@ class AssetController extends Controller
     {
         $asset = Asset::findOrFail($id);
 
+        $harga = str_replace(['Rp', '.', ' '], '', $request->harga);
+
         $asset->update([
+
             'nama_perangkat' => $request->nama_perangkat,
+
             'jenis_perangkat' => $request->jenis_perangkat,
+
             'versi_perangkat' => $request->versi_perangkat,
+
             'pengguna' => $request->pengguna,
+
             'departemen' => $request->departemen,
+
             'tanggal_beli' => $request->tanggal_beli,
-            'harga' => str_replace(['Rp ', '.'], '', $request->harga),
+
+            'harga' => $harga,
+
             'status' => $request->status,
+
+            'dipinjam_ke' => $request->dipinjam_ke,
+
+            'tanggal_pinjam' => $request->tanggal_pinjam,
+
+            'tanggal_kembali' => $request->tanggal_kembali,
+
         ]);
 
-        return redirect()->route('assets.index');
+        return redirect()
+            ->route('assets.show', $asset->id)
+            ->with('success', 'Asset berhasil diupdate');
     }
 
     public function destroy($id)
