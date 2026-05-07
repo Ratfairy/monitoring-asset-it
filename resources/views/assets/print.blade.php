@@ -34,7 +34,7 @@
 
     <div style="margin:20px 0;">
 
-        {!! QrCode::size(200)->generate(route('assets.public-show', $asset->id)) !!}
+        {!! QrCode::size(200)->generate(route('assets.public', $asset->id)) !!}
 
     </div>
 
