@@ -76,19 +76,65 @@
                             </div>
                         </div>
 
-                        <!-- Row 3: Departemen dan Tanggal Beli -->
                         <div class="row g-3 mb-4">
+
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-building text-primary me-2"></i>Departemen
-                                </label>
-                                <input type="text"
-                                       name="departemen"
-                                       class="form-control form-control-lg rounded-3 shadow-sm"
-                                       placeholder="Masukkan departemen"
-                                       value="{{ $asset->departemen }}"
-                                       style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+
+                                <label>Departemen</label>
+
+                                <select name="departemen" class="form-select">
+
+                                    <option value="">-- Pilih Departemen --</option>
+
+                                    <option value="Produksi"
+                                        {{ $asset->departemen == 'Produksi' ? 'selected' : '' }}>
+                                        Produksi
+                                    </option>
+
+                                    <option value="Quality"
+                                        {{ $asset->departemen == 'Quality' ? 'selected' : '' }}>
+                                        Quality
+                                    </option>
+
+                                    <option value="Design"
+                                        {{ $asset->departemen == 'Design' ? 'selected' : '' }}>
+                                        Design
+                                    </option>
+
+                                    <option value="Marketing"
+                                        {{ $asset->departemen == 'Marketing' ? 'selected' : '' }}>
+                                        Marketing
+                                    </option>
+
+                                    <option value="Purchasing"
+                                        {{ $asset->departemen == 'Purchasing' ? 'selected' : '' }}>
+                                        Purchasing
+                                    </option>
+
+                                    <option value="Finance"
+                                        {{ $asset->departemen == 'Finance' ? 'selected' : '' }}>
+                                        Finance
+                                    </option>
+
+                                </select>
+
                             </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-semibold text-dark mb-2">
+                                    <i class="fas fa-calendar text-primary me-2"></i>Tanggal Beli
+                                </label>
+
+                                <input type="date"
+                                    name="tanggal_beli"
+                                    class="form-control form-control-lg rounded-3 shadow-sm"
+                                    value="{{ $asset->tanggal_beli }}"
+                                    style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+
+                            </div>
+
+                        </div>
 
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold text-dark mb-2">

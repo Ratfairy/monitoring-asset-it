@@ -19,10 +19,6 @@
 
                 <h2>{{ $asset->nama_perangkat }}</h2>
 
-                <span class="badge bg-success">
-                    {{ $asset->status }}
-                </span>
-
             </div>
 
             <div class="row">
@@ -40,15 +36,15 @@
 
                 <div class="col-md-8">
 
-                    <table class="table">
+                    <table class="table table-bordered">
 
                         <tr>
-                            <th>Kode Asset</th>
+                            <th width="35%">Kode Asset</th>
                             <td>{{ $asset->kode_asset }}</td>
                         </tr>
 
                         <tr>
-                            <th>Jenis</th>
+                            <th>Jenis Perangkat</th>
                             <td>{{ $asset->jenis_perangkat }}</td>
                         </tr>
 
@@ -74,10 +70,81 @@
 
                         <tr>
                             <th>Harga</th>
+
                             <td>
                                 Rp {{ number_format($asset->harga, 0, ',', '.') }}
                             </td>
                         </tr>
+
+                        <tr>
+
+                            <th>Status</th>
+
+                            <td>
+
+                                @if($asset->status == 'Active')
+
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+
+                                @elseif($asset->status == 'Maintenance')
+
+                                    <span class="badge bg-warning text-dark">
+                                        Maintenance
+                                    </span>
+
+                                @elseif($asset->status == 'Rusak')
+
+                                    <span class="badge bg-danger">
+                                        Rusak
+                                    </span>
+
+                                @elseif($asset->status == 'Dipinjam')
+
+                                    <span class="badge bg-primary">
+                                        Dipinjam
+                                    </span>
+
+                                @endif
+
+                            </td>
+
+                        </tr>
+
+                        @if($asset->status == 'Dipinjam')
+
+                        <tr>
+
+                            <th>Dipinjam Ke</th>
+
+                            <td>
+                                {{ $asset->dipinjam_ke }}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Tanggal Pinjam</th>
+
+                            <td>
+                                {{ $asset->tanggal_pinjam }}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Tanggal Kembali</th>
+
+                            <td>
+                                {{ $asset->tanggal_kembali }}
+                            </td>
+
+                        </tr>
+
+                        @endif
 
                     </table>
 
