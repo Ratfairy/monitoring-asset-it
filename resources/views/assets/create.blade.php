@@ -199,10 +199,14 @@
                             <label class="form-label">Foto Asset</label>
                             <input type="file" name="foto" class="form-control" accept="image/*">
                         </div>
-
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-save me-2"></i>Simpan Asset
-                        </button>
+                        <div class="d-flex gap-3 mt-5 pt-3 border-top">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3 px-5 fw-semibold shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                                <i class="fas fa-save me-2"></i>Simpan Asset
+                            </button>
+                            <a href="{{ route('assets.index') }}" class="btn btn-outline-secondary btn-lg rounded-3 px-5 fw-semibold">
+                                <i class="fas fa-times me-2"></i>Batal
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
