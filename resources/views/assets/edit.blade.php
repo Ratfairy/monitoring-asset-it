@@ -27,6 +27,7 @@
         z-index: 1;
         font-size: 1.8rem;
         font-weight: 700;
+        color: white;
     }
 
     .modern-card {
@@ -34,188 +35,209 @@
         box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
         border-radius: 12px;
         overflow: hidden;
-        transition: all 0.3s ease;
     }
 
-    .modern-card:hover {
-        box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
+    .form-control,
+    .form-select {
+        border: 1.5px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 14px 16px;
+        background: #f8fafc;
     }
 
-    .form-group-wrapper {
-        margin-bottom: 1.8rem;
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+        background: white;
     }
 
     .form-label {
-        font-size: 0.95rem;
         font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.6rem;
-        display: block;
+        margin-bottom: 8px;
+        color: #1f2937;
     }
 
-    .form-control, .form-select {
-        border: 1.5px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background-color: #f8fafc;
+    .peminjaman-box {
+        background: #e0f2fe;
+        border-radius: 14px;
+        padding: 24px;
+        margin-top: 10px;
     }
 
-    .form-control:focus, .form-select:focus {
-        border-color: #667eea;
-        background-color: white;
-        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        outline: none;
+    .laptop-box {
+        background: #f3e8ff;
+        border-radius: 14px;
+        padding: 24px;
+        margin-top: 10px;
     }
 
-    .form-control::placeholder {
-        color: #a0aec0;
-    }
-
-    .form-row-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .submit-btn {
+    .btn-update {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
         border: none;
-        padding: 1rem 2rem;
-        font-size: 1.05rem;
+        color: white;
+        padding: 14px 40px;
+        border-radius: 12px;
         font-weight: 600;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        margin-top: 1.5rem;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
     }
 
-    .submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    .btn-update:hover {
+        opacity: .95;
+        color: white;
     }
 
-    .submit-btn:active {
-        transform: translateY(0);
-    }
-
-    .peminjaman-alert {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        border: 1.5px solid #667eea;
-        border-radius: 8px;
-        padding: 1.8rem;
-        margin-bottom: 1.8rem;
-    }
-
-    .peminjaman-alert h6 {
-        color: #667eea;
+    .btn-cancel {
+        padding: 14px 40px;
+        border-radius: 12px;
         font-weight: 600;
-        margin-bottom: 1.2rem;
-    }
-
-    @media (max-width: 768px) {
-        .modern-form-header {
-            padding: 1.5rem;
-        }
-
-        .modern-form-header h4 {
-            font-size: 1.4rem;
-        }
-
-        .form-row-grid {
-            grid-template-columns: 1fr;
-        }
     }
 </style>
 
 <div class="container mt-5 mb-5">
+
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+
+        <div class="col-lg-9">
+
             <div class="modern-card">
+
                 <div class="modern-form-header">
-                    <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Data Perangkat</h4>
+
+                    <h4>
+                        <i class="fas fa-edit me-2"></i>
+                        Edit Asset
+                    </h4>
+
                 </div>
 
                 <div class="card-body p-5">
-                    <form action="{{ route('assets.update', $asset->id) }}" method="POST">
+
+                    <form action="{{ route('assets.update', $asset->id) }}"
+                          method="POST">
+
                         @csrf
                         @method('PUT')
 
-                        <!-- Row 1: Nama dan Jenis Perangkat -->
-                        <div class="row g-3 mb-4">
+                        <div class="row g-4">
+
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-tag text-primary me-2"></i>Nama Perangkat
+
+                                <label class="form-label">
+                                    Nama Perangkat
                                 </label>
+
                                 <input type="text"
                                        name="nama_perangkat"
-                                       class="form-control form-control-lg rounded-3 border-light shadow-sm"
-                                       placeholder="Masukkan nama perangkat"
-                                       value="{{ $asset->nama_perangkat }}"
-                                       style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+                                       class="form-control"
+                                       value="{{ $asset->nama_perangkat }}">
+
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-laptop text-primary me-2"></i>Jenis Perangkat
+
+                                <label class="form-label">
+                                    Jenis Perangkat
                                 </label>
-                                <select name="jenis_perangkat" class="form-select form-select-lg rounded-3 shadow-sm" style="background-color: #f8f9fa; border-color: #e9ecef !important;">
-                                    <option value="">-- Pilih Jenis Perangkat --</option>
-                                    <option value="Laptop" {{ $asset->jenis_perangkat == 'Laptop' ? 'selected' : '' }}>Laptop</option>
-                                    <option value="PC" {{ $asset->jenis_perangkat == 'PC' ? 'selected' : '' }}>PC</option>
-                                    <option value="Printer" {{ $asset->jenis_perangkat == 'Printer' ? 'selected' : '' }}>Printer</option>
-                                    <option value="Monitor" {{ $asset->jenis_perangkat == 'Monitor' ? 'selected' : '' }}>Monitor</option>
-                                    <option value="Router" {{ $asset->jenis_perangkat == 'Router' ? 'selected' : '' }}>Router</option>
-                                    <option value="Switch" {{ $asset->jenis_perangkat == 'Switch' ? 'selected' : '' }}>Switch</option>
-                                    <option value="Access Point" {{ $asset->jenis_perangkat == 'Access Point' ? 'selected' : '' }}>Access Point</option>
-                                    <option value="Server" {{ $asset->jenis_perangkat == 'Server' ? 'selected' : '' }}>Server</option>
+
+                                <select name="jenis_perangkat"
+                                        id="jenis_perangkat"
+                                        class="form-select">
+
+                                    <option value="">
+                                        -- Pilih Jenis --
+                                    </option>
+
+                                    <option value="Laptop"
+                                        {{ $asset->jenis_perangkat == 'Laptop' ? 'selected' : '' }}>
+                                        Laptop
+                                    </option>
+
+                                    <option value="PC"
+                                        {{ $asset->jenis_perangkat == 'PC' ? 'selected' : '' }}>
+                                        PC
+                                    </option>
+
+                                    <option value="Printer"
+                                        {{ $asset->jenis_perangkat == 'Printer' ? 'selected' : '' }}>
+                                        Printer
+                                    </option>
+
+                                    <option value="Monitor"
+                                        {{ $asset->jenis_perangkat == 'Monitor' ? 'selected' : '' }}>
+                                        Monitor
+                                    </option>
+
+                                    <option value="Router"
+                                        {{ $asset->jenis_perangkat == 'Router' ? 'selected' : '' }}>
+                                        Router
+                                    </option>
+
+                                    <option value="Switch"
+                                        {{ $asset->jenis_perangkat == 'Switch' ? 'selected' : '' }}>
+                                        Switch
+                                    </option>
+
+                                    <option value="Access Point"
+                                        {{ $asset->jenis_perangkat == 'Access Point' ? 'selected' : '' }}>
+                                        Access Point
+                                    </option>
+
+                                    <option value="Server"
+                                        {{ $asset->jenis_perangkat == 'Server' ? 'selected' : '' }}>
+                                        Server
+                                    </option>
+
                                 </select>
-                            </div>
-                        </div>
 
-                        <!-- Row 2: Versi dan Pengguna -->
-                        <div class="row g-3 mb-4">
+                            </div>
+
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-code-branch text-primary me-2"></i>Versi
+
+                                <label class="form-label">
+                                    Versi Perangkat
                                 </label>
+
                                 <input type="text"
                                        name="versi_perangkat"
-                                       class="form-control form-control-lg rounded-3 shadow-sm"
-                                       placeholder="Masukkan versi"
-                                       value="{{ $asset->versi_perangkat }}"
-                                       style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+                                       class="form-control"
+                                       value="{{ $asset->versi_perangkat }}">
+
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-user text-primary me-2"></i>Pengguna
+
+                                <label class="form-label">
+                                    Pengguna
                                 </label>
+
                                 <input type="text"
                                        name="pengguna"
-                                       class="form-control form-control-lg rounded-3 shadow-sm"
-                                       placeholder="Masukkan nama pengguna"
-                                       value="{{ $asset->pengguna }}"
-                                       style="background-color: #f8f9fa; border-color: #e9ecef !important;">
-                            </div>
-                        </div>
+                                       class="form-control"
+                                       value="{{ $asset->pengguna }}">
 
-                        <div class="row g-3 mb-4">
+                            </div>
 
                             <div class="col-md-6">
 
-                                <label>Departemen</label>
+                                <label class="form-label">
+                                    Departemen
+                                </label>
 
-                                <select name="departemen" class="form-select">
+                                <select name="departemen"
+                                        class="form-select">
 
-                                    <option value="">-- Pilih Departemen --</option>
+                                    <option value="">
+                                        -- Pilih Departemen --
+                                    </option>
 
-                                    <option value="Produksi"
-                                        {{ $asset->departemen == 'Produksi' ? 'selected' : '' }}>
-                                        Produksi
+                                    <option value="HRD"
+                                        {{ $asset->departemen == 'HRD' ? 'selected' : '' }}>
+                                        HRD
+                                    </option>
+
+                                    <option value="Plant Manager"
+                                        {{ $asset->departemen == 'Plant Manager' ? 'selected' : '' }}>
+                                        Plant Manager
                                     </option>
 
                                     <option value="Quality"
@@ -223,14 +245,24 @@
                                         Quality
                                     </option>
 
+                                    <option value="QAQC"
+                                        {{ $asset->departemen == 'QAQC' ? 'selected' : '' }}>
+                                        QA QC
+                                    </option>
+
+                                    <option value="PPIC"
+                                        {{ $asset->departemen == 'PPIC' ? 'selected' : '' }}>
+                                        PPIC
+                                    </option>
+
                                     <option value="Design"
                                         {{ $asset->departemen == 'Design' ? 'selected' : '' }}>
                                         Design
                                     </option>
 
-                                    <option value="Marketing"
-                                        {{ $asset->departemen == 'Marketing' ? 'selected' : '' }}>
-                                        Marketing
+                                    <option value="Sales&Marketing"
+                                        {{ $asset->departemen == 'Sales&Marketing' ? 'selected' : '' }}>
+                                        Sales &Marketing
                                     </option>
 
                                     <option value="Purchasing"
@@ -238,9 +270,14 @@
                                         Purchasing
                                     </option>
 
-                                    <option value="Finance"
-                                        {{ $asset->departemen == 'Finance' ? 'selected' : '' }}>
-                                        Finance
+                                    <option value="Finance&Accounting"
+                                        {{ $asset->departemen == 'Finance&Accounting' ? 'selected' : '' }}>
+                                        Finance & Accounting
+                                    </option>
+
+                                    <option value="IT"
+                                        {{ $asset->departemen == 'IT' ? 'selected' : '' }}>
+                                        IT
                                     </option>
 
                                 </select>
@@ -249,129 +286,258 @@
 
                             <div class="col-md-6">
 
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-calendar text-primary me-2"></i>Tanggal Beli
+                                <label class="form-label">
+                                    Tanggal Beli
                                 </label>
 
                                 <input type="date"
-                                    name="tanggal_beli"
-                                    class="form-control form-control-lg rounded-3 shadow-sm"
-                                    value="{{ $asset->tanggal_beli }}"
-                                    style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+                                       name="tanggal_beli"
+                                       class="form-control"
+                                       value="{{ $asset->tanggal_beli }}">
 
                             </div>
 
-
-                        <!-- Row 4: Harga dan Status -->
-                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-money-bill-wave text-primary me-2"></i>Harga
+
+                                <label class="form-label">
+                                    Condition
                                 </label>
+
+                                <select name="condition"
+                                        class="form-select">
+
+                                    <option value="Ok"
+                                        {{ $asset->condition == 'Ok' ? 'selected' : '' }}>
+                                        Ok
+                                    </option>
+
+                                    <option value="NG"
+                                        {{ $asset->condition == 'NG' ? 'selected' : '' }}>
+                                        NG
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    No Seri
+                                </label>
+
                                 <input type="text"
-                                    name="harga"
-                                    id="harga"
-                                    class="form-control form-control-lg rounded-3 shadow-sm"
-                                    placeholder="Rp 0"
-                                    value="Rp {{ number_format($asset->harga, 0, ',', '.') }}"
-                                    style="background-color: #f8f9fa; border-color: #e9ecef !important;">
+                                       name="no_seri"
+                                       class="form-control"
+                                       value="{{ $asset->no_seri }}">
+
+                            </div>
+
+                        </div>
+
+                        <!-- LAPTOP FIELDS -->
+
+                        <div id="laptop-fields"
+                             class="laptop-box mt-4"
+                             style="{{ $asset->jenis_perangkat == 'Laptop' ? '' : 'display:none;' }}">
+
+                            <h5 class="mb-4 fw-bold">
+                                Informasi Laptop
+                            </h5>
+
+                            <div class="row g-4">
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        SN Windows
+                                    </label>
+
+                                    <input type="text"
+                                           name="sn_windows"
+                                           class="form-control"
+                                           value="{{ $asset->sn_windows }}">
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        SN Office
+                                    </label>
+
+                                    <input type="text"
+                                           name="sn_office"
+                                           class="form-control"
+                                           value="{{ $asset->sn_office }}">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row g-4 mt-2">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Harga
+                                </label>
+
+                                <input type="text"
+                                       name="harga"
+                                       id="harga"
+                                       class="form-control"
+                                       value="Rp {{ number_format($asset->harga,0,',','.') }}">
+
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold text-dark mb-2">
-                                    <i class="fas fa-info-circle text-primary me-2"></i>Status Asset
+
+                                <label class="form-label">
+                                    Status Asset
                                 </label>
-                                <select name="status" id="status" class="form-select form-select-lg rounded-3 shadow-sm" style="background-color: #f8f9fa; border-color: #e9ecef !important;">
-                                    <option value="Active" {{ $asset->status == 'Active' ? 'selected' : '' }}>
+
+                                <select name="status"
+                                        id="status"
+                                        class="form-select">
+
+                                    <option value="Active"
+                                        {{ $asset->status == 'Active' ? 'selected' : '' }}>
                                         Active
                                     </option>
-                                    <option value="Maintenance" {{ $asset->status == 'Maintenance' ? 'selected' : '' }}>
+
+                                    <option value="Maintenance"
+                                        {{ $asset->status == 'Maintenance' ? 'selected' : '' }}>
                                         Maintenance
                                     </option>
-                                    <option value="Rusak" {{ $asset->status == 'Rusak' ? 'selected' : '' }}>
+
+                                    <option value="Rusak"
+                                        {{ $asset->status == 'Rusak' ? 'selected' : '' }}>
                                         Rusak
                                     </option>
-                                    <option value="Dipinjam" {{ $asset->status == 'Dipinjam' ? 'selected' : '' }}>
+
+                                    <option value="Dipinjam"
+                                        {{ $asset->status == 'Dipinjam' ? 'selected' : '' }}>
                                         Dipinjam
                                     </option>
+
                                 </select>
+
                             </div>
+
                         </div>
 
-                        <!-- Peminjaman Fields (Conditional) -->
+                        <!-- PEMINJAMAN -->
+
                         <div id="peminjaman-fields"
-                            style="{{ $asset->status == 'Dipinjam' ? '' : 'display:none;' }}"
-                            class="alert alert-info rounded-3 p-4 mb-4" role="alert">
-                            <h6 class="alert-heading fw-bold mb-3">
-                                <i class="fas fa-hand-holding text-info me-2"></i>Informasi Peminjaman
-                            </h6>
+                             class="peminjaman-box"
+                             style="{{ $asset->status == 'Dipinjam' ? '' : 'display:none;' }}">
 
-                            <div class="row g-3">
+                            <h5 class="mb-4 fw-bold">
+                                Informasi Peminjaman
+                            </h5>
+
+                            <div class="row g-4">
+
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold text-dark mb-2">Dipinjam Ke</label>
+
+                                    <label class="form-label">
+                                        Dipinjam Ke
+                                    </label>
+
                                     <input type="text"
-                                        name="dipinjam_ke"
-                                        class="form-control form-control-lg rounded-3 shadow-sm"
-                                        placeholder="Nama peminjam"
-                                        value="{{ $asset->dipinjam_ke }}"
-                                        style="background-color: #fff; border-color: #e9ecef !important;">
+                                           name="dipinjam_ke"
+                                           class="form-control"
+                                           value="{{ $asset->dipinjam_ke }}">
+
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold text-dark mb-2">Tanggal Pinjam</label>
+
+                                    <label class="form-label">
+                                        Tanggal Pinjam
+                                    </label>
+
                                     <input type="date"
-                                        name="tanggal_pinjam"
-                                        class="form-control form-control-lg rounded-3 shadow-sm"
-                                        value="{{ $asset->tanggal_pinjam }}"
-                                        style="background-color: #fff; border-color: #e9ecef !important;">
+                                           name="tanggal_pinjam"
+                                           class="form-control"
+                                           value="{{ $asset->tanggal_pinjam }}">
+
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold text-dark mb-2">Tanggal Kembali</label>
+
+                                    <label class="form-label">
+                                        Tanggal Kembali
+                                    </label>
+
                                     <input type="date"
-                                        name="tanggal_kembali"
-                                        class="form-control form-control-lg rounded-3 shadow-sm"
-                                        value="{{ $asset->tanggal_kembali }}"
-                                        style="background-color: #fff; border-color: #e9ecef !important;">
+                                           name="tanggal_kembali"
+                                           class="form-control"
+                                           value="{{ $asset->tanggal_kembali }}">
+
                                 </div>
+
                             </div>
+
                         </div>
 
-                        <!-- Action Buttons -->
-                        <div class="d-flex gap-3 mt-5 pt-3 border-top">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-3 px-5 fw-semibold shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
-                                <i class="fas fa-save me-2"></i>Update Asset
+                        <div class="d-flex gap-3 mt-5">
+
+                            <button class="btn btn-update">
+
+                                <i class="fas fa-save me-2"></i>
+                                Update Asset
+
                             </button>
-                            <a href="{{ route('assets.index') }}" class="btn btn-outline-secondary btn-lg rounded-3 px-5 fw-semibold">
-                                <i class="fas fa-times me-2"></i>Batal
+
+                            <a href="{{ route('assets.index') }}"
+                               class="btn btn-outline-secondary btn-cancel">
+
+                                Batal
+
                             </a>
+
                         </div>
+
                     </form>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 
 <script>
 
-    const hargaInput = document.getElementById('harga');
-    const status = document.getElementById('status');
+    // FORMAT RUPIAH
 
+    const hargaInput = document.getElementById('harga');
 
     hargaInput.addEventListener('keyup', function(e) {
 
         let angka = this.value.replace(/[^,\d]/g, '');
 
         let split = angka.split(',');
+
         let sisa = split[0].length % 3;
 
         let rupiah = split[0].substr(0, sisa);
-        let ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        let ribuan = split[0]
+            .substr(sisa)
+            .match(/\d{3}/gi);
 
         if (ribuan) {
 
             let separator = sisa ? '.' : '';
+
             rupiah += separator + ribuan.join('.');
 
         }
@@ -383,6 +549,11 @@
         this.value = 'Rp ' + rupiah;
 
     });
+
+    // STATUS DIPINJAM
+
+    const status =
+        document.getElementById('status');
 
     const peminjamanFields =
         document.getElementById('peminjaman-fields');
@@ -404,6 +575,32 @@
     status.addEventListener('change', togglePeminjaman);
 
     togglePeminjaman();
+
+    // JENIS LAPTOP
+
+    const jenisPerangkat =
+        document.getElementById('jenis_perangkat');
+
+    const laptopFields =
+        document.getElementById('laptop-fields');
+
+    function toggleLaptopFields() {
+
+        if(jenisPerangkat.value === 'Laptop') {
+
+            laptopFields.style.display = 'block';
+
+        } else {
+
+            laptopFields.style.display = 'none';
+
+        }
+
+    }
+
+    jenisPerangkat.addEventListener('change', toggleLaptopFields);
+
+    toggleLaptopFields();
 
 </script>
 

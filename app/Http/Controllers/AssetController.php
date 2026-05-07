@@ -100,6 +100,10 @@ class AssetController extends Controller
             'harga' => str_replace(['Rp ', '.'], '', $request->harga),
             'foto' => $fotoPath,
             'status' => 'Active',
+            'condition' => $request->condition,
+            'no_seri' => $request->no_seri,
+            'sn_windows' => $request->sn_windows,
+            'sn_office' => $request->sn_office,
         ]);
 
         return redirect()->route('assets.index');
@@ -147,6 +151,10 @@ class AssetController extends Controller
             'tanggal_pinjam' => $request->tanggal_pinjam,
 
             'tanggal_kembali' => $request->tanggal_kembali,
+            'condition' => $request->condition,
+            'no_seri' => $request->no_seri,
+            'sn_windows' => $request->sn_windows,
+            'sn_office' => $request->sn_office,
 
         ]);
 

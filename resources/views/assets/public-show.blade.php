@@ -5,7 +5,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     <style>
+
         body {
             background-color: #f5f6fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -108,13 +110,14 @@
             margin-bottom: 1.2rem;
         }
 
-        .detail-table .detail-label {
+        .detail-label {
             color: #6b7280;
             font-size: 0.95rem;
             font-weight: 600;
+            margin-bottom: 0.3rem;
         }
 
-        .detail-table .detail-value {
+        .detail-value {
             color: #1f2937;
             font-size: 1rem;
             font-weight: 500;
@@ -134,7 +137,7 @@
         }
 
         .asset-image img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .no-image-placeholder {
@@ -158,6 +161,7 @@
         }
 
         @media (max-width: 768px) {
+
             .modern-header {
                 padding: 1.5rem;
             }
@@ -173,114 +177,349 @@
             .page-container {
                 padding: 1rem 0;
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
 <div class="page-container">
+
     <div class="container">
+
         <div class="row justify-content-center">
+
             <div class="col-lg-9">
+
                 <div class="modern-card">
+
                     <div class="modern-header">
-                        <h2><i class="fas fa-microchip me-2"></i>{{ $asset->nama_perangkat }}</h2>
-                        <p class="asset-subheader mb-0"><i class="fas fa-barcode me-1"></i>Kode: {{ $asset->kode_asset }}</p>
+
+                        <h2>
+                            <i class="fas fa-microchip me-2"></i>
+                            {{ $asset->nama_perangkat }}
+                        </h2>
+
+                        <p class="asset-subheader mb-0">
+                            <i class="fas fa-barcode me-1"></i>
+                            Kode: {{ $asset->kode_asset }}
+                        </p>
+
                     </div>
 
                     <div class="card-body p-5">
+
                         <div class="row g-4">
+
                             <div class="col-lg-4">
+
                                 <div class="asset-image">
+
                                     @if($asset->foto)
-                                        <img src="{{ asset('storage/' . $asset->foto) }}" alt="Foto Asset">
+
+                                        <img src="{{ asset('storage/' . $asset->foto) }}"
+                                             alt="Foto Asset">
+
                                     @else
+
                                         <div class="no-image-placeholder">
+
                                             <div>
-                                                <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
-                                                <p class="mt-2 mb-0">Tidak ada foto</p>
+
+                                                <i class="fas fa-image"
+                                                   style="font-size: 3rem; opacity: 0.3;"></i>
+
+                                                <p class="mt-2 mb-0">
+                                                    Tidak ada foto
+                                                </p>
+
                                             </div>
+
                                         </div>
+
                                     @endif
+
                                 </div>
+
                             </div>
 
                             <div class="col-lg-8">
+
                                 <div class="asset-info-grid">
+
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-tag me-1" style="color: #667eea;"></i>Jenis Perangkat</div>
-                                        <div class="info-value">{{ $asset->jenis_perangkat }}</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-tag me-1"
+                                               style="color: #667eea;"></i>
+                                            Jenis Perangkat
+                                        </div>
+
+                                        <div class="info-value">
+                                            {{ $asset->jenis_perangkat }}
+                                        </div>
+
                                     </div>
 
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-box me-1" style="color: #667eea;"></i>Versi</div>
-                                        <div class="info-value">{{ $asset->versi_perangkat }}</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-box me-1"
+                                               style="color: #667eea;"></i>
+                                            Versi
+                                        </div>
+
+                                        <div class="info-value">
+                                            {{ $asset->versi_perangkat }}
+                                        </div>
+
                                     </div>
 
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-user me-1" style="color: #667eea;"></i>Pengguna</div>
-                                        <div class="info-value">{{ $asset->pengguna }}</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-user me-1"
+                                               style="color: #667eea;"></i>
+                                            Pengguna
+                                        </div>
+
+                                        <div class="info-value">
+                                            {{ $asset->pengguna }}
+                                        </div>
+
                                     </div>
 
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-building me-1" style="color: #667eea;"></i>Departemen</div>
-                                        <div class="info-value">{{ $asset->departemen }}</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-building me-1"
+                                               style="color: #667eea;"></i>
+                                            Departemen
+                                        </div>
+
+                                        <div class="info-value">
+                                            {{ $asset->departemen }}
+                                        </div>
+
                                     </div>
 
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-calendar-alt me-1" style="color: #667eea;"></i>Tanggal Beli</div>
-                                        <div class="info-value">{{ $asset->tanggal_beli }}</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-calendar-alt me-1"
+                                               style="color: #667eea;"></i>
+                                            Tanggal Beli
+                                        </div>
+
+                                        <div class="info-value">
+                                            {{ $asset->tanggal_beli }}
+                                        </div>
+
                                     </div>
 
                                     <div class="info-box">
-                                        <div class="info-label"><i class="fas fa-info-circle me-1" style="color: #667eea;"></i>Status</div>
+
+                                        <div class="info-label">
+                                            <i class="fas fa-info-circle me-1"
+                                               style="color: #667eea;"></i>
+                                            Status
+                                        </div>
+
                                         @if($asset->status == 'Active')
-                                            <span class="badge bg-success detail-badge"><i class="fas fa-check-circle me-1"></i>Active</span>
+
+                                            <span class="badge bg-success detail-badge">
+                                                <i class="fas fa-check-circle me-1"></i>
+                                                Active
+                                            </span>
+
                                         @elseif($asset->status == 'Maintenance')
-                                            <span class="badge bg-warning text-dark detail-badge"><i class="fas fa-tools me-1"></i>Maintenance</span>
+
+                                            <span class="badge bg-warning text-dark detail-badge">
+                                                <i class="fas fa-tools me-1"></i>
+                                                Maintenance
+                                            </span>
+
                                         @elseif($asset->status == 'Rusak')
-                                            <span class="badge bg-danger detail-badge"><i class="fas fa-exclamation-circle me-1"></i>Rusak</span>
+
+                                            <span class="badge bg-danger detail-badge">
+                                                <i class="fas fa-exclamation-circle me-1"></i>
+                                                Rusak
+                                            </span>
+
                                         @elseif($asset->status == 'Dipinjam')
-                                            <span class="badge bg-primary detail-badge"><i class="fas fa-hand-holding me-1"></i>Dipinjam</span>
+
+                                            <span class="badge bg-primary detail-badge">
+                                                <i class="fas fa-hand-holding me-1"></i>
+                                                Dipinjam
+                                            </span>
+
                                         @endif
+
                                     </div>
+
                                 </div>
 
                                 <div class="detail-table">
+
                                     <div class="row">
+
                                         <div class="col-sm-6">
-                                            <div class="detail-label"><i class="fas fa-dollar-sign me-1" style="color: #667eea;"></i>Harga</div>
-                                            <div class="detail-value">Rp {{ number_format($asset->harga, 0, ',', '.') }}</div>
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-dollar-sign me-1"
+                                                   style="color: #667eea;"></i>
+                                                Harga
+                                            </div>
+
+                                            <div class="detail-value">
+                                                Rp {{ number_format($asset->harga, 0, ',', '.') }}
+                                            </div>
+
                                         </div>
+
                                     </div>
 
-                                    @if($asset->status == 'Dipinjam')
-                                        <div class="row mt-3">
-                                            <div class="col-sm-6">
-                                                <div class="detail-label"><i class="fas fa-user-check me-1" style="color: #667eea;"></i>Dipinjam Ke</div>
-                                                <div class="detail-value">{{ $asset->dipinjam_ke }}</div>
+                                    <div class="row mt-3">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-circle-check me-1"
+                                                   style="color: #667eea;"></i>
+                                                Condition
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="detail-label"><i class="fas fa-calendar me-1" style="color: #667eea;"></i>Tanggal Pinjam</div>
-                                                <div class="detail-value">{{ $asset->tanggal_pinjam }}</div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->condition ?: '-' }}
                                             </div>
+
                                         </div>
-                                        <div class="row mt-3">
-                                            <div class="col-sm-6">
-                                                <div class="detail-label"><i class="fas fa-undo me-1" style="color: #667eea;"></i>Tanggal Kembali</div>
-                                                <div class="detail-value">{{ $asset->tanggal_kembali }}</div>
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-barcode me-1"
+                                                   style="color: #667eea;"></i>
+                                                No Seri
                                             </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->no_seri ?: '-' }}
+                                            </div>
+
                                         </div>
+
+                                    </div>
+
+                                    @if($asset->jenis_perangkat == 'Laptop')
+
+                                    <div class="row mt-3">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fab fa-windows me-1"
+                                                   style="color: #667eea;"></i>
+                                                SN Windows
+                                            </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->sn_windows ?: '-' }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-file-word me-1"
+                                                   style="color: #667eea;"></i>
+                                                SN Office
+                                            </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->sn_office ?: '-' }}
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                     @endif
+
+                                    @if($asset->status == 'Dipinjam')
+
+                                    <div class="row mt-3">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-user-check me-1"
+                                                   style="color: #667eea;"></i>
+                                                Dipinjam Ke
+                                            </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->dipinjam_ke }}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-calendar me-1"
+                                                   style="color: #667eea;"></i>
+                                                Tanggal Pinjam
+                                            </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->tanggal_pinjam }}
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mt-3">
+
+                                        <div class="col-sm-6">
+
+                                            <div class="detail-label">
+                                                <i class="fas fa-undo me-1"
+                                                   style="color: #667eea;"></i>
+                                                Tanggal Kembali
+                                            </div>
+
+                                            <div class="detail-value">
+                                                {{ $asset->tanggal_kembali }}
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    @endif
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 
 </body>

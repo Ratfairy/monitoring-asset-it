@@ -20,6 +20,10 @@ class Asset extends Model
         'status',
         'dipinjam_ke',
         'tanggal_pinjam',
-        'tanggal_kembali'
+        'tanggal_kembali',
+        'condition',
+        'no_seri',
+        'sn_windows',
+        'sn_office',
     ];
 }

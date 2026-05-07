@@ -292,6 +292,19 @@
                                     </div>
                                 @endif
 
+                                @if($asset->jenis_perangkat == 'Laptop')
+                                    <div class="asset-info-grid" style="margin-bottom: 1.5rem;">
+                                        <div class="asset-info-box">
+                                            <strong><i class="fas fa-key me-2" style="color: #667eea;"></i>SN Windows</strong>
+                                            <span>{{ $asset->sn_windows }}</span>
+                                        </div>
+                                        <div class="asset-info-box">
+                                            <strong><i class="fas fa-key me-2" style="color: #667eea;"></i>SN Office</strong>
+                                            <span>{{ $asset->sn_office }}</span>
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="qr-section">
                                     <h5><i class="fas fa-qrcode me-2"></i>QR Code Asset</h5>
                                     <p>Scan untuk melihat halaman publik.</p>
@@ -330,6 +343,14 @@
                                     <div class="asset-info-box">
                                         <strong><i class="fas fa-building me-2" style="color: #667eea;"></i>Departemen</strong>
                                         <span>{{ $asset->departemen }}</span>
+                                    </div>
+                                    <div class="asset-info-box">
+                                        <strong><i class="fas fa-cogs me-2" style="color: #667eea;"></i>Condition</strong>
+                                        <span>{{ $asset->condition }}</span>
+                                    </div>
+                                    <div class="asset-info-box">
+                                        <strong><i class="fas fa-hashtag me-2" style="color: #667eea;"></i>No Seri</strong>
+                                        <span>{{ $asset->no_seri }}</span>
                                     </div>
                                 </div>
 
